@@ -4,7 +4,7 @@ import random
 
 global velocidad # 10 Generaciones por segundo
 #Imprimir mundo con celulas vivas y muertas por defecto
-def imprimirMundo(mundo, gen='X', vivo='⛆ ', muerto='  '):
+def imprimirMundo(mundo, gen='X', vivo='⏹ ', muerto='  '):
     n = len(mundo) # Capturar numero de filas
     m = len(mundo[0]) # Capturar numero de columnas
     os.system('clear') # Limpiar la pantalla
@@ -114,7 +114,7 @@ def ImportarMundo():
 
 def menu():
     global velocidad
-    velocidad = 1/10
+    velocidad = 1/15
     while True:
         os.system("clear") #os.system('cls')
         print("\n\n\t1.- Simular random en pantalla N generaciones")
