@@ -63,11 +63,15 @@ def ExportarSimulacion(mundo):
         F.write(row+"\n")
 
 #A partir de aqui se usan las funciones basicas anteriores
-def SimularNGen():
+def SimularNGen(mundo = False):
     N = int(input("\tIngrese cantidad de generaciones:"))
-    n = int(input("\tIngrese la cantidad de filas:"))
-    m = int(input("\tIngrese la cantidad de columnas:"))
-    mundo = genMundoRandom(n,m)
+    if not mundo:
+        n = int(input("\tIngrese la cantidad de filas:"))
+        m = int(input("\tIngrese la cantidad de columnas:"))
+        mundo = genMundoRandom(n,m)
+    else:
+        n = len(mundo)
+        m = len(mundo[0])
     for gen in range(N):
         imprimirMundo(mundo,gen+1)
         mundo = siguienteGen(mundo)
@@ -105,14 +109,12 @@ def ImportarMundo():
             rowMundo.append(1 if cel=='1' else 0)
         if len(rowMundo):
             mundo.append(rowMundo)
-    imprimirMundo(mundo)
+    SimularNGen(mundo)
     F.close()
-    time.sleep(8)
-
 
 def menu():
     global velocidad
-    velocidad = 1/5
+    velocidad = 1/10
     while True:
         os.system("clear") #os.system('cls')
         print("\n\n\t1.- Simular random en pantalla N generaciones")
